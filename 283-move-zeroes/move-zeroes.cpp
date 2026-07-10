@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+
+        int j = -1;
+        for(int i = 0; i < nums.size(); i++){
+            if(nums[i] == 0){
+                j = i;
+                break;
+            }
+        }
+
+        // Agar koi zero nahi mila, to kuch karne ki zaroorat nahi
+        if(j == -1) return;
+
+        for(int i = j+1; i < nums.size(); i++){   // <-- yahan "j" ki jagah "i" check karo
+            if(nums[i] != 0){
+                swap(nums[i], nums[j]);
+                j++;
+            }
+        }
+    }
+};
