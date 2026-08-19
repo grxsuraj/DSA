@@ -2,22 +2,28 @@ class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
 
-        int j = -1;
-        for(int i = 0; i < nums.size(); i++){
-            if(nums[i] == 0){
-                j = i;
+        int i=-1;
+
+        for(int j=0; j<nums.size()-1; j++){
+
+            if(nums[j]==0){
+                i=j;
                 break;
             }
         }
 
-        // Agar koi zero nahi mila, to kuch karne ki zaroorat nahi
-        if(j == -1) return;
+        if(i== -1){
+            return ;
+        }
 
-        for(int i = j+1; i < nums.size(); i++){   // <-- yahan "j" ki jagah "i" check karo
-            if(nums[i] != 0){
+        for(int j=i+1; j<nums.size(); j++ ){
+
+            if(nums[j]!= 0){
                 swap(nums[i], nums[j]);
-                j++;
+                i++;
             }
         }
+
+        
     }
 };
