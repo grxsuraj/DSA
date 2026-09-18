@@ -1,25 +1,23 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-
-        // length alag hai toh anagram ho hi nahi sakta
         if (s.size() != t.size()) return false;
 
-        unordered_map<char, int> freq;
+        unordered_map<char, int> mp;
 
-        // count s ke chars
-        for (char c : s) {
-            freq[c]++;
+        // s ke characters count karo
+        for (int i = 0; i < s.size(); i++) {
+            mp[s[i]]++;
         }
 
-        // subtract t ke chars
-        for (char c : t) {
-            freq[c]--;
+        // t ke characters se ghatao
+        for (int i = 0; i < t.size(); i++) {
+            mp[t[i]]--;
         }
 
-        // koi bhi 0 se alag hai toh false
-        for (auto& [key, val] : freq) {
-            if (val != 0) return false;
+        // check karo sab zero hain ya nahi
+        for (auto it = mp.begin(); it != mp.end(); it++) {
+            if (it->second != 0) return false;
         }
 
         return true;
